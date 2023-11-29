@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.label_close {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#results_container {
+  overflow: auto;
+  white-space: nowrap; /* Prevents content from wrapping to the next line */
+  margin-bottom: 30%;
+}
+
+.process_num_block {
+  background-color: #ffc8dd;
+  position: relative;
+  width: 100px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.header_color {
+  background-color: #edceff !important;
+}
+
+.table_color {
+  background-color: #cfe8ff !important;
+}
+
+.efficiency_div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* PageReplacement.html */
+.replaced_page {
+  background-color: #ffc8dd !important;
+}
+
+

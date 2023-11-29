@@ -1,0 +1,65 @@
+{% extends "index.html" %} {% block content %}
+<form
+  action="#"
+  method="post"
+  class="container-sm mt-5"
+  id="page_replacement_input_form"
+>
+  <div class="row">
+    <div class="mb-3 col">
+      <label class="form-label">Page Replacement Algorithm:</label>
+      <select class="form-select" id="page_replacement_algorithm" required>
+        <option value="FIFO" selected>FIFO (First In, First Out)</option>
+        <option value="LRU">LRU (Least Recently Used)</option>
+        <option value="LFU">LFU (Least Frequently Used)</option>
+        <option value="Optimal">Optimal</option>
+      </select>
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Page References:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="page_references"
+        placeholder="e.g. 7 0 1 2 0 3 4 2 3 0 3 2 1 2 0 1 7"
+        required
+      />
+    </div>
+
+    <div class="mb-3 col" id="number_of_frames_div">
+      <label class="form-label">Number of Frames:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="number_of_frames"
+        placeholder="e.g. 3"
+      />
+    </div>
+  </div>
+
+  <div class="d-inline">
+    <button type="submit" class="btn btn-primary mb-2" id="submit_btn">
+      Calculate
+    </button>
+  </div>
+
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value=""
+      id="showSimulation"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      Show simulation
+    </label>
+  </div>
+</form>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='pageReplacement.js')}}"
+></script>
+{% endblock %}

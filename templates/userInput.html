@@ -1,0 +1,178 @@
+{% extends "index.html" %} {% block content %}
+<div class="alert alert-primary" role="alert">
+  All inputs must only contain numbers separated by a space. The 1st number in
+  each input field corresponds to P1's data, the second number corresponds to
+  P2's, and so on.
+</div>
+
+<form action="#" method="post" class="container-sm mt-5" id="user_input_form">
+  <div class="row">
+    <div class="mb-3 col">
+      <label class="form-label">CPU Scheduling Algorithm:</label>
+      <select class="form-select" id="main_algorithm" required>
+        <option value="FCFS" selected>FCFS (First-Come, First-Served)</option>
+        <option value="SJF">SJF (Shortest Job First)</option>
+        <option value="PriorityNP">Priority (Non-Preemptive)</option>
+        <option value="PriorityP">Priority (Preemptive)</option>
+        <option value="RoundRobin">Round Robin</option>
+        <option value="SRTF">SRTF (Shortest Remaining Time First)</option>
+        <option value="MLQ">MLQ (Multilevel Queue)</option>
+        <option value="MLFQ">MLFQ (Multilevel Feedback Queue)</option>
+      </select>
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Arrival Time</label>
+      <input
+        type="text"
+        class="form-control"
+        id="arrival_time"
+        placeholder="e.g. 3 5 8 0 12"
+        required
+      />
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Burst Time</label>
+      <input
+        type="text"
+        class="form-control"
+        id="burst_time"
+        placeholder="e.g. 4 9 4 7 6"
+        required
+      />
+    </div>
+
+    <div class="mb-3 col d-none" id="priority">
+      <label class="form-label">Priority</label>
+      <input
+        type="text"
+        class="form-control"
+        id="priorityInput"
+        placeholder="e.g. 2 1 2 1 1"
+      />
+    </div>
+
+    <div class="mb-3 col d-none" id="rr_qt">
+      <label class="form-label">Quantum Time (Round-Robin)</label>
+      <input type="number" class="form-control" id="quantum_time" />
+    </div>
+  </div>
+
+  <div class="row" id="quantum_row">
+    <div class="mb-3 d-none mlfq_qt col">
+      <div class="label_close">
+        <label class="form-label">Level 1 Quantum Time</label>
+        <button type="button" class="btn-close"></button>
+      </div>
+      <input type="number" class="form-control mlfq_quantum_time" />
+    </div>
+
+    <div class="mb-3 d-none mlfq_qt col">
+      <div class="label_close">
+        <label class="form-label">Level 2 Quantum Time</label>
+        <button type="button" class="btn-close"></button>
+      </div>
+      <input type="number" class="form-control mlfq_quantum_time" />
+    </div>
+
+    <div class="mb-3 d-none col mlfq_algo_div">
+      <div class="label_close">
+        <label class="form-label" id="last_lvl">Level 3 Algorithm:</label>
+      </div>
+      <select class="form-select" id="mlfq_algorithm">
+        <option value="FCFS" selected>FCFS (First-Come, First-Served)</option>
+        <option value="SJF">SJF (Shortest Job First)</option>
+        <option value="PriorityNP">Priority (Non-Preemptive)</option>
+        <option value="PriorityP">Priority (Preemptive)</option>
+        <option value="RoundRobin">Round Robin</option>
+        <option value="SRTF">SRTF (Shortest Remaining Time First)</option>
+        <option value="MLQ">MLQ (Multilevel Queue)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-3 col">
+      <button
+        type="button"
+        class="btn btn-primary d-none mb-2"
+        id="add_lvl_btn"
+      >
+        Add another level
+      </button>
+    </div>
+  </div>
+
+  <div class="row" id="mlq_row">
+    <div class="mb-3 d-none col mlq_algo_div">
+      <div class="label_close">
+        <label class="form-label">Algorithm Level 1 (MLQ):</label>
+        <button type="button" class="btn-close"></button>
+      </div>
+      <select class="form-select mlq_algorithm">
+        <option value="FCFS" selected>FCFS (First-Come, First-Served)</option>
+        <option value="SJF">SJF (Shortest Job First)</option>
+        <option value="PriorityNP">Priority (Non-Preemptive)</option>
+        <option value="PriorityP">Priority (Preemptive)</option>
+        <option value="SRTF">SRTF (Shortest Remaining Time First)</option>
+      </select>
+    </div>
+
+    <div class="mb-3 d-none col mlq_algo_div">
+      <div class="label_close">
+        <label class="form-label">Algorithm Level 2 (MLQ):</label>
+        <button type="button" class="btn-close"></button>
+      </div>
+      <select class="form-select mlq_algorithm">
+        <option value="FCFS" selected>FCFS (First-Come, First-Served)</option>
+        <option value="SJF">SJF (Shortest Job First)</option>
+        <option value="PriorityNP">Priority (Non-Preemptive)</option>
+        <option value="PriorityP">Priority (Preemptive)</option>
+        <option value="SRTF">SRTF (Shortest Remaining Time First)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-3 col">
+      <button
+        type="button"
+        class="btn btn-primary col d-none mb-2"
+        id="add_btn"
+      >
+        Add another algorithm
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-3 d-none col-sm-3" id="level">
+      <label class="form-label">Level</label>
+      <input
+        type="text"
+        class="form-control"
+        id="levelInput"
+        placeholder="e.g. 1 1 2 2 1"
+      />
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary col mb-2" id="submit_btn">
+    Calculate
+  </button>
+
+  <button type="button" class="btn btn-primary mb-2" id="page_replacement_btn">
+    Go to Page Replacement
+  </button>
+</form>
+
+<div class="container-sm mt-5 border border-secondary" id="data_container">
+  <div class="overflow-x-auto px-4" id="results_container"></div>
+</div>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='index.js')}}"
+></script>
+{% endblock %}

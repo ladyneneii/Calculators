@@ -1,0 +1,141 @@
+{% extends "index.html" %} {% block content %}
+<div class="alert alert-primary" role="alert">
+  Enter a .txt file only. Keyword must only consist of 10 characters or less.
+</div>
+
+<form action="#" method="post" class="container-sm mt-5" id="form_encrypt">
+  <h1 class="display-6">Encrypt a File</h1>
+  <div class="row">
+    <div class="mb-3 col">
+      <label for="formFile" class="form-label">File to encrypt:</label>
+      <input class="form-control" type="file" id="file_to_encrypt" />
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Keyword:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="keyword_encrypt"
+        placeholder="e.g. encrypt"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="d-inline">
+    <button type="submit" class="btn btn-primary mb-2" id="encrypt_btn">
+      Encrypt
+    </button>
+  </div>
+</form>
+
+<div class="container-sm mt-5 d-none" id="decrypt_info">
+  <h1 class="display-6 text-danger">DO NOT SHARE THIS WITH ANYONE!</h1>
+  <p>
+    Copy the following info and save them somewhere so you can use them later to
+    decrypt the generated cryptic file.
+  </p>
+  <div class="row">
+    <div class="mb-3 col private_key_div">
+      <label for="formFile" class="form-label">Private Key:</label>
+      <input
+        class="form-control"
+        type="number"
+        id="private_key_result"
+        readonly
+      />
+      <button type="button" class="btn btn-primary mt-2" id="copy_private_key">
+        Copy
+      </button>
+    </div>
+
+    <div class="mb-3 col mod_div">
+      <label for="formFile" class="form-label">Mod:</label>
+      <input class="form-control" type="number" id="mod_result" readonly />
+      <button type="button" class="btn btn-primary mt-2" id="copy_mod">
+        Copy
+      </button>
+    </div>
+
+    <div class="mb-3 col keyword_div">
+      <label class="form-label">Keyword:</label>
+      <input type="text" class="form-control" id="keyword_result" readonly />
+      <button type="button" class="btn btn-primary mt-2" id="copy_keyword">
+        Copy
+      </button>
+    </div>
+
+    <div class="mb-3 col otp_div">
+      <label class="form-label">OTP:</label>
+      <input type="text" class="form-control" id="otp_result" readonly />
+      <button type="button" class="btn btn-primary mt-2" id="copy_otp">
+        Copy
+      </button>
+    </div>
+  </div>
+</div>
+
+<form action="#" method="post" class="container-sm mt-5" id="form_decrypt">
+  <h1 class="display-6">Decrypt a File</h1>
+  <div class="row">
+    <div class="mb-3 col">
+      <label for="formFile" class="form-label">File to decrypt:</label>
+      <input class="form-control" type="file" id="file_to_decrypt" />
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Private Key:</label>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="e.g. 20513"
+        id="private_key_decrypt"
+      />
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Mod:</label>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="e.g. 50851"
+        id="mod_decrypt"
+      />
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Keyword:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="keyword_decrypt"
+        placeholder="e.g. encrypt"
+        required
+      />
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">OTP:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="e.g. 1011010111 100110010001 101110001001 11000011000 111110111000 101001110 100111010101 110001011110 110010111010 1001010100 100010000101 11000101111 110011100010 1101011110 1110010110 10011110110 111111100011 101010110001 110011011110 100101010010 10011001111 1001100011 10110101011 10110011100 100001111000 111010000 111000111010 ___"
+        id="otp_decrypt"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="d-inline">
+    <button type="submit" class="btn btn-primary mb-2" id="decrypt_btn">
+      Decrypt
+    </button>
+  </div>
+</form>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='cryptography.js')}}"
+></script>
+{% endblock %}
