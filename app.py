@@ -10,6 +10,7 @@ from MLQ import MLQ
 from MLFQ import MLFQ
 from PageReplacement import PageReplacement
 from Cryptography import encrypt_my_algo, decrypt_my_algo
+from DiskScheduling import DiskScheduling
 
 # from views import views
 
@@ -21,8 +22,8 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def userInput():
-    return render_template("userInput.html")
+def cpuScheduling():
+    return render_template("cpuScheduling.html")
 
 
 @app.route("/pageReplacement")
@@ -35,8 +36,13 @@ def cryptography():
     return render_template("cryptography.html")
 
 
-@app.route("/sendInput", methods=["POST"])
-def handle_user_input():
+@app.route("/diskScheduling")
+def diskScheduling():
+    return render_template("diskScheduling.html")
+
+
+@app.route("/sendInputCPUScheduling", methods=["POST"])
+def handle_user_input_CPU_scheduling():
     # try:
     data = request.get_json()
 
@@ -167,6 +173,7 @@ def handle_user_input():
                     pInfo8.mlfq_orderOfProcesses,
                 ]
             ),
+            200,
         )
 
 
@@ -205,12 +212,26 @@ def handle_user_input_cryptography():
         modDecrypt = inputData.get("modDecrypt")
         keywordDecrypt = inputData.get("keywordDecrypt")
         otpDecrypt = inputData.get("otpDecrypt")
-        with open(f'{fileToDecrypt}.txt', 'r') as file:
+        with open(f"{fileToDecrypt}.txt", "r") as file:
             caesar_encrypt_result = file.read()
-            decrypt_my_algo(caesar_encrypt_result, privateKeyDecrypt, modDecrypt, keywordDecrypt, otpDecrypt, fileToDecrypt)
+            decrypt_my_algo(
+                caesar_encrypt_result,
+                privateKeyDecrypt,
+                modDecrypt,
+                keywordDecrypt,
+                otpDecrypt,
+                fileToDecrypt,
+            )
 
             return "A decrypted file has been generated."
 
+
+@app.route("/sendInputDiskScheduling", methods=["POST"])
+def handle_user_input_disk_scheduling():
+    inputData = request.get_json()
+    outputData = DiskScheduling(inputData)
+
+    return outputData
 
 
 if __name__ == "__main__":

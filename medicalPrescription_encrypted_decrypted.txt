@@ -1,0 +1,19 @@
+Dr. Emily Johnson
+123 Health Street
+Cityville, State 12345
+Phone: (555) 123-4567
+Date: December 5, 2023
+
+Patient: John Doe
+DOB: January 1, 1980
+Address: 456 Care Lane
+Citytown, State 54321
+
+Rx: Acetaminophen
+Dosage: 500mg
+Frequency: Take 1 tablet every 6 hours
+Duration: 7 days
+
+Additional Instructions: Take with food. If symptoms persist, consult with a healthcare professional.
+
+Dr. Emily Johnson

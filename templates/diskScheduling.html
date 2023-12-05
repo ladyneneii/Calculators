@@ -1,0 +1,57 @@
+{% extends "index.html" %} {% block content %}
+<form
+  action="#"
+  method="post"
+  class="container-sm mt-5"
+  id="disk_scheduling_input_form"
+>
+  <div class="row">
+    <div class="mb-3 col">
+      <label class="form-label">Disk Scheduling Algorithm:</label>
+      <select class="form-select" id="disk_scheduling_algorithm" required>
+        <option value="FCFS" selected>FCFS (First-Come, First-Served)</option>
+        <option value="SSTF">SSTF (Shortest Seek Time First)</option>
+        <option value="SCAN">SCAN</option>
+        <option value="C-SCAN">C-SCAN (Circular SCAN)</option>
+        <option value="LOOK">LOOK</option>
+        <option value="C-LOOK">C-LOOK (Circular LOOK)</option>
+      </select>
+    </div>
+
+    <div class="mb-3 col">
+      <label class="form-label">Disk Requests:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="disk_requests"
+        placeholder="e.g. 65 117 58 112 7 101 73 105 38 88"
+        required
+      />
+    </div>
+
+    <div class="mb-3 col" id="number_of_frames_div">
+      <label class="form-label">Cylinders:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="number_of_cylinders"
+        placeholder="e.g. 200"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="d-inline">
+    <button type="submit" class="btn btn-primary mb-2" id="submit_btn">
+      Calculate
+    </button>
+  </div>
+</form>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script
+  type="module"
+  src="{{ url_for('static', filename='diskScheduling.js')}}"
+></script>
+{% endblock %}

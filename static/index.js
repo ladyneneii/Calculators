@@ -370,7 +370,7 @@ user_input_form.addEventListener("submit", async (e) => {
 
   try {
     console.log(formData);
-    const response = await fetch("/sendInput", {
+    const response = await fetch("/sendInputCPUScheduling", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

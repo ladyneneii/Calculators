@@ -116,7 +116,7 @@ def rsa_decrypt(transpose_decrypt_result, privateKey, modNum):
 
     # else:
     #     print("Private key does not exist.")
-
+    print(f"rsa_decrypt_result character list: {rsa_decrypt_result}")
     rsa_decrypt_result = "".join(rsa_decrypt_result)
 
     return rsa_decrypt_result
@@ -148,6 +148,7 @@ def transpositional_encrypt(rsa_encrypt_result, keyword):
         for i in range(0, len(rsa_encrypt_result), cols)
     ]
     print("Matrix preparation for transposition:")
+    print("transpose_matrix:")
     print_matrix(transpose_matrix)
 
     # creating the char_index to get the index associated with a letter in the keyword
@@ -189,7 +190,8 @@ def transpositional_decrypt(vernam_decrypt_result):
         element for row in transpose_matrix for element in row if element is not None
     ]
 
-    print("Matrix preparation for transposition:")
+    print("Matrix preparation for transposition")
+    print("transpose_matrix:")
     print_matrix(transpose_matrix)
 
     return transpose_decrypt_result
@@ -204,7 +206,7 @@ def matrixToBinary(matrix):
     return binary_matrix
 
 
-def vernam_encrypt(transpose_encrypt_result):
+def vernam_encrypt(transpose_encrypt_result, fileName):
     # convert the values in the transpose_encrypt_result to binary
     binary_matrix = matrixToBinary(transpose_encrypt_result)
 
@@ -249,6 +251,11 @@ def vernam_encrypt(transpose_encrypt_result):
 
     # number of underscores correspond to the number of columns
     otp_matrix_string += "_" * num_cols
+
+    # output a separate OTP file in case the otp is too long
+    print("helloooo")
+    with open(f"{fileName}_otp.txt", "w") as file:
+        file.write(otp_matrix_string)
 
     return vernam_encrypt_result, otp_matrix_string
 
@@ -302,9 +309,8 @@ def vernam_decrypt(vigenere_decrypt_result, otp_matrix_string):
 
 
 def vigenere_encrypt(vernam_encrypt_result):
-    print("Vigenere Matrix:")
-    for row in vigenere_matrix:
-        print(row)
+    print("vigenere_matrix:")
+    print_matrix(vigenere_matrix)
     # print("XOR Matrix:")
     # for row in vernam_encrypt_result:
     #     print(row)
@@ -344,6 +350,9 @@ def vigenere_decrypt(caesar_decrypt_result, keyword):
             keyword_values.append(idx)
 
     vigenere_decrypt_result = caesar_decrypt_result
+    print("Vigenere Matrix:")
+    print_matrix(vigenere_matrix)
+    print(f"keyword_values {keyword_values}")
 
     vigenere_shift = 0
     for depth_num in range(len(vigenere_decrypt_result)):
@@ -452,6 +461,9 @@ def caesar_decrypt(caesar_encrypt_result):
     print("caesar_matrix:")
     print_matrix(caesar_matrix)
 
+    print(f"caesar_guide: {caesar_guide}")
+    print()
+
     caesar_decrypt_result = caesar_matrix
     caesar_shift = 0
     for depth_num in range(len(caesar_decrypt_result)):
@@ -503,7 +515,7 @@ def encrypt_my_algo(message, keyword, fileName):
     print_matrix(transpose_encrypt_result)
     print()
 
-    vernam_encrypt_result, otp_matrix_string = vernam_encrypt(transpose_encrypt_result)
+    vernam_encrypt_result, otp_matrix_string = vernam_encrypt(transpose_encrypt_result, fileName)
     print("vernam_encrypt_result:")
     print_matrix(vernam_encrypt_result)
     print()
@@ -598,10 +610,10 @@ def decrypt_my_algo(
 
 # fileToDecrypt = "myname_encrypted"
 # caesar_cipher = "FGGED EEKE DELHF JFJFL INHEK KGFIF LLHGK  OIOPN NJQMP PRMRN  RMLTM PQLNL TQVO  RWUTU RPQQR VSRRX RUYQ VXYST YVWUT YTVbU  ____"
-# privateKey = 20609
-# modNum = 54731
-# keyword = "taylor"
-# otp_matrix_string = "110011111 10001111010 11011101000 1011111110 110011111110 110101000110 110011111111 11100000000 1110001100 1000101011 10001100111 101010011001 110000010100 110110010 110111100100 11100011000 111011110010 11001001001 111101100101 100000101001 110111001001 11110010011 111100011100 111110111101 ____"
+# privateKey = 37199
+# modNum = 50621
+# keyword = "CS-3104"
+# otp_matrix_string = "101010101111 101000110100 101110100110 10100110001 11101000110 101000111100 100100110101 110010010100 101100000101 1100001000 100010011100 101000011111 101110100101 10000010101 __"
 # decrypt_my_algo(
 #     caesar_cipher, privateKey, modNum, keyword, otp_matrix_string, fileToDecrypt
 # )
