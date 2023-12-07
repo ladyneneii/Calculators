@@ -515,7 +515,9 @@ def encrypt_my_algo(message, keyword, fileName):
     print_matrix(transpose_encrypt_result)
     print()
 
-    vernam_encrypt_result, otp_matrix_string = vernam_encrypt(transpose_encrypt_result, fileName)
+    vernam_encrypt_result, otp_matrix_string = vernam_encrypt(
+        transpose_encrypt_result, fileName
+    )
     print("vernam_encrypt_result:")
     print_matrix(vernam_encrypt_result)
     print()
