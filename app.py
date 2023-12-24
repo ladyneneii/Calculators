@@ -200,30 +200,33 @@ def handle_user_input_cryptography():
 
     if action == "encrypt":
         fileToEncrypt = inputData.get("fileToEncrypt")
+        fileToEncryptContent = inputData.get("fileToEncryptContent")
         keywordEncrypt = inputData.get("keywordEncrypt")
-        with open(f"{fileToEncrypt}.txt", "r") as file:
-            message = file.read()
-            returnedData = encrypt_my_algo(message, keywordEncrypt, fileToEncrypt)
 
-            return jsonify(returnedData)
+        returnedData = encrypt_my_algo(
+            fileToEncryptContent, keywordEncrypt, fileToEncrypt
+        )
+
+        return jsonify(returnedData)
+
     elif action == "decrypt":
         fileToDecrypt = inputData.get("fileToDecrypt")
+        fileToDecryptContent = inputData.get("fileToDecryptContent")
         privateKeyDecrypt = inputData.get("privateKeyDecrypt")
         modDecrypt = inputData.get("modDecrypt")
         keywordDecrypt = inputData.get("keywordDecrypt")
         otpDecrypt = inputData.get("otpDecrypt")
-        with open(f"{fileToDecrypt}.txt", "r") as file:
-            caesar_encrypt_result = file.read()
-            decrypt_my_algo(
-                caesar_encrypt_result,
-                privateKeyDecrypt,
-                modDecrypt,
-                keywordDecrypt,
-                otpDecrypt,
-                fileToDecrypt,
-            )
 
-            return "A decrypted file has been generated."
+        returnedData = decrypt_my_algo(
+            fileToDecryptContent,
+            privateKeyDecrypt,
+            modDecrypt,
+            keywordDecrypt,
+            otpDecrypt,
+            fileToDecrypt,
+        )
+
+        return jsonify(returnedData)
 
 
 @app.route("/sendInputDiskScheduling", methods=["POST"])

@@ -1,5 +1,7 @@
 import sympy as sp
 import random
+import io
+import os
 
 # stores all the indices in the order of the ASCII value of their assigned letter in the keyword, to be used in transpositional and vigenere encryption and decryption
 keyword_values = []
@@ -531,8 +533,11 @@ def encrypt_my_algo(message, keyword, fileName):
     print(f"caesar_encrypt_result: {caesar_encrypt_result}")
     print()
 
-    with open(f"{fileName}_encrypted.txt", "w") as file:
-        file.write(caesar_encrypt_result)
+    download_link = f'<a href="data:text/plain;charset=utf-8,{caesar_encrypt_result}" download="{fileName}_encrypted.txt">Download File</a>'
+    print(download_link)
+
+    download_link_href = f"data:text/plain;charset=utf-8,{caesar_encrypt_result}"
+    download_link_download = f"{fileName}_encrypted.txt"
 
     print("Save these information:")
     print(f"Private Key: {privateKey}")
@@ -540,7 +545,15 @@ def encrypt_my_algo(message, keyword, fileName):
     print(f"Keyword: {keyword}")
     print(f"OTP: {otp_matrix_string}")
 
-    return caesar_encrypt_result, privateKey, modNum, keyword, otp_matrix_string
+    return (
+        caesar_encrypt_result,
+        privateKey,
+        modNum,
+        keyword,
+        otp_matrix_string,
+        download_link_href,
+        download_link_download,
+    )
 
 
 def decrypt_my_algo(
@@ -583,8 +596,10 @@ def decrypt_my_algo(
     print(f"rsa_decrypt_result: {rsa_decrypt_result}")
     print()
 
-    with open(f"{fileToDecrypt}_decrypted.txt", "w") as file:
-        file.write(rsa_decrypt_result)
+    download_link_href = f"data:text/plain;charset=utf-8,{rsa_decrypt_result}"
+    download_link_download = f"{fileToDecrypt}_decrypted.txt"
+
+    return download_link_href, download_link_download
 
 
 # fileName = "myname"
