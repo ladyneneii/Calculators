@@ -107,6 +107,11 @@ function constructPageReplacementResults(
   body.append(container);
 
   if (showSimulation.checked) {
+    const h1 = document.createElement("h1");
+    h1.textContent = "SIMULATION";
+    h1.classList.add("mt-5")
+    container.append(h1);
+
     // loop through each framesDetails
     framesDetailsSet.forEach((framesDetails) => {
       const { frames, hitOrFault, remark, replacedRows } = framesDetails;

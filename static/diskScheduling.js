@@ -78,14 +78,31 @@ function constructdiskSchedulingResults(returnedData) {
   //   diskSchedulingAlgorithm,
   //   diskRequests,
   //   returnedData
-  const { diskSchedulingAlgorithm, diskRequests, numberOfCylinders } =
+  const { diskSchedulingAlgorithm, diskRequests, numberOfCylinders, seekTime } =
     returnedData;
   const div = document.createElement("div");
   const canvas = document.createElement("canvas");
   div.classList.add("mx-5", "mt-5");
   canvas.id = `myChart-${instance}`;
 
+  const algorithmh4 = document.createElement("h4");
+  algorithmh4.textContent = `Disk Scheduling Algorithm: ${diskSchedulingAlgorithm}`;
+  div.append(algorithmh4);
+
+  const diskRequestsh4 = document.createElement("h4");
+  diskRequestsh4.textContent = `Disk Requests: ${diskRequests}`;
+  div.append(diskRequestsh4);
+
+  const numberOfClylindersh4 = document.createElement("h4");
+  numberOfClylindersh4.textContent = `Number of Cylinders: ${numberOfCylinders}`;
+  div.append(numberOfClylindersh4);
+
+  const seekTimeh4 = document.createElement("h4");
+  seekTimeh4.textContent = `Seek Time: ${seekTime}`;
+  div.append(seekTimeh4);
+
   div.append(canvas);
+  div.classList.add("mb-5");
   body.append(div);
 
   const ctx = document.getElementById(`myChart-${instance}`);
