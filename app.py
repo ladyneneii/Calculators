@@ -242,5 +242,5 @@ def handle_user_input_disk_scheduling():
     return outputData
 
 
-if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8081, debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=False, host="0.0.0.0")
