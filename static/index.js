@@ -156,6 +156,9 @@ function handleDeleteClick(e) {
     if (last_level <= 1) {
       alert("You must have at least two levels in MLFQ.");
       last_level++;
+
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
   } else if (class_list.contains("mlq_algo_div")) {
@@ -163,6 +166,9 @@ function handleDeleteClick(e) {
     if (mlq_level <= 0) {
       alert("You must have at least one level in MLQ.");
       mlq_level++;
+
+      loadingAnimation.classList.add("d-none");
+      
       return;
     }
   }
@@ -283,10 +289,16 @@ user_input_form.addEventListener("submit", async (e) => {
 
     if (arrival_time.length !== bt_length) {
       alert("Arrival time and burst time lengths should be the same");
+
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
   } else {
     alert("Inputs should only contain numbers or spaces.");
+
+    loadingAnimation.classList.add("d-none");
+
     return;
   }
 
@@ -294,6 +306,9 @@ user_input_form.addEventListener("submit", async (e) => {
     let P = document.querySelector("#priorityInput").value;
     if (!isValid.test(P)) {
       alert("Invalid input in Priority field.");
+
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
     let PNumbers = P.match(toNumbers);
@@ -302,6 +317,9 @@ user_input_form.addEventListener("submit", async (e) => {
     if (priority.length !== bt_length) {
       alert("Priority and burst time lengths should be the same");
       console.log(priority.length, burst_time.length);
+
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
   }
@@ -315,6 +333,9 @@ user_input_form.addEventListener("submit", async (e) => {
     let L = document.querySelector("#levelInput").value;
     if (!isValid.test(L)) {
       alert("Invalid input in Level field.");
+
+      loadingAnimation.classList.add("d-none");
+
       return;
     } else {
       let numbers = L.match(toNumbers);
@@ -322,6 +343,9 @@ user_input_form.addEventListener("submit", async (e) => {
 
       if (levels.length !== bt_length) {
         alert("Level and burst time lengths should be the same");
+
+        loadingAnimation.classList.add("d-none");
+
         return;
       }
 
@@ -329,6 +353,9 @@ user_input_form.addEventListener("submit", async (e) => {
         alert(
           "Make sure the maximum number in the Level input field does not exceed the total number of MLQ algorithms."
         );
+
+        loadingAnimation.classList.add("d-none");
+
         return;
       }
     }

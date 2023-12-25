@@ -5,11 +5,15 @@
 
 <form action="#" method="post" class="container-sm mt-5" id="form_encrypt">
   <h1 class="display-6">Encrypt a File</h1>
-  <p>This encryption and decryption algorithm is a hybrid of the RSA, Transposition, Vernam, Vigenere, and Caesar Cipher algorithms—all manually coded.</p>
+  <p>
+    This encryption and decryption algorithm is a hybrid of the RSA,
+    Transposition, Vernam, Vigenere, and Caesar Cipher algorithms—all manually
+    coded.
+  </p>
   <div class="row">
     <div class="mb-3 col">
       <label for="formFile" class="form-label">File to encrypt:</label>
-      <input class="form-control" type="file" id="file_to_encrypt" />
+      <input class="form-control" type="file" id="file_to_encrypt" required />
     </div>
 
     <div class="mb-3 col">
@@ -35,7 +39,8 @@
   <h1 class="display-6 text-danger">DO NOT SHARE THIS WITH ANYONE!</h1>
   <p>
     Copy the following info and save them somewhere so you can use them later to
-    decrypt the generated cryptic file. Save the generated cryptic file to your device using the download link beside the Encrypt button.
+    decrypt the generated cryptic file. Save the generated cryptic file to your
+    device using the download link beside the Encrypt button.
   </p>
   <div class="row">
     <div class="mb-3 col private_key_div">
@@ -82,7 +87,7 @@
   <div class="row">
     <div class="mb-3 col">
       <label for="formFile" class="form-label">File to decrypt:</label>
-      <input class="form-control" type="file" id="file_to_decrypt" />
+      <input class="form-control" type="file" id="file_to_decrypt" required />
     </div>
 
     <div class="mb-3 col">
@@ -92,6 +97,7 @@
         class="form-control"
         placeholder="e.g. 20513"
         id="private_key_decrypt"
+        required
       />
     </div>
 
@@ -102,6 +108,7 @@
         class="form-control"
         placeholder="e.g. 50851"
         id="mod_decrypt"
+        required
       />
     </div>
 

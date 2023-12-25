@@ -108,10 +108,14 @@ formEncrypt.addEventListener("submit", (e) => {
     } else {
       alert("Keyword must be 10 characters or less.");
 
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
   } else {
     alert("Please enter a .txt file.");
+
+    loadingAnimation.classList.add("d-none");
 
     return;
   }
@@ -218,10 +222,14 @@ formDecrypt.addEventListener("submit", (e) => {
     } else {
       alert("Keyword must be 10 characters or less.");
 
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
   } else {
     alert("Please enter a .txt file.");
+
+    loadingAnimation.classList.add("d-none");
 
     return;
   }

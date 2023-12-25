@@ -20,6 +20,8 @@ document
     if (NOC < 1) {
       alert("Number of cylinders should be greater than 0.");
 
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
 
@@ -32,6 +34,8 @@ document
         alert(
           "The max number in disk requests must not exceed or be equal to the number of cylinders."
         );
+
+        loadingAnimation.classList.add("d-none");
 
         return;
       }
@@ -75,6 +79,8 @@ document
       }
     } else {
       alert("Disk requests inputs should only contain numbers or spaces.");
+
+      loadingAnimation.classList.add("d-none");
 
       return;
     }

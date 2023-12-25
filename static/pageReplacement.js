@@ -20,6 +20,8 @@ document
     if (NOF < 1) {
       alert("Number of references should be greater than 0.");
 
+      loadingAnimation.classList.add("d-none");
+
       return;
     }
 
@@ -62,6 +64,8 @@ document
       }
     } else {
       alert("Page references inputs should only contain numbers or spaces.");
+
+      loadingAnimation.classList.add("d-none");
 
       return;
     }
