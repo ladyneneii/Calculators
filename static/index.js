@@ -1,3 +1,4 @@
+const loadingAnimation = document.querySelector("#loadingAnimation");
 const priority = document.querySelector("#priority");
 const level = document.querySelector("#level");
 const main_algorithm = document.querySelector("#main_algorithm");
@@ -264,6 +265,8 @@ let globalFormData = {};
 user_input_form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  loadingAnimation.classList.remove("d-none");
+
   let bt_length;
 
   let isValid = /^(\d+|0|\s)+$/;
@@ -386,6 +389,8 @@ user_input_form.addEventListener("submit", async (e) => {
     // console.log(timestamps);
     // console.log(processNumbers);
     // console.log(processesList);
+
+    loadingAnimation.classList.add("d-none");
 
     constructResults(data.data);
   } catch (error) {
@@ -576,4 +581,3 @@ function displayEfficiency(processesList) {
   efficiencyDiv.append(aveWTSpan);
   results_container.append(efficiencyDiv);
 }
-

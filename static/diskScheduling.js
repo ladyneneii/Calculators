@@ -1,3 +1,4 @@
+const loadingAnimation = document.querySelector("#loadingAnimation");
 const body = document.body;
 let instance = 1;
 
@@ -5,6 +6,8 @@ document
   .querySelector("#disk_scheduling_input_form")
   .addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    loadingAnimation.classList.remove("d-none");
 
     let isValid = /^(\d+|0|\s)+$/;
     let toNumbers = /\b(?:0|[1-9]\d*)\b/g;
@@ -57,6 +60,9 @@ document
         const returnedData = await response.json();
 
         console.log("This is the returned data: ", returnedData);
+
+        loadingAnimation.classList.add("d-none");
+
         constructdiskSchedulingResults(returnedData);
 
         // constructdiskSchedulingResults(

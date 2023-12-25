@@ -1,7 +1,5 @@
 import sympy as sp
 import random
-import io
-import os
 
 # stores all the indices in the order of the ASCII value of their assigned letter in the keyword, to be used in transpositional and vigenere encryption and decryption
 keyword_values = []

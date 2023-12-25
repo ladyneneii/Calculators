@@ -1,3 +1,4 @@
+const loadingAnimation = document.querySelector("#loadingAnimation");
 const formEncrypt = document.querySelector("#form_encrypt");
 const formDecrypt = document.querySelector("#form_decrypt");
 const encryptBtn = document.querySelector("#encrypt_btn");
@@ -14,6 +15,8 @@ const copyOtpBtn = document.querySelector("#copy_otp");
 
 formEncrypt.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  loadingAnimation.classList.remove("d-none");
 
   const fileToEncrypt = document
     .querySelector("#file_to_encrypt")
@@ -74,6 +77,8 @@ formEncrypt.addEventListener("submit", (e) => {
 
           formEncrypt.append(a);
 
+          loadingAnimation.classList.add("d-none");
+
           decryptInfo.classList.remove("d-none");
           privateKeyResult.value = privateKey;
           modResult.value = mod;
@@ -114,6 +119,8 @@ formEncrypt.addEventListener("submit", (e) => {
 
 formDecrypt.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  loadingAnimation.classList.remove("d-none");
 
   const fileToDecrypt = document
     .querySelector("#file_to_decrypt")
@@ -175,10 +182,13 @@ formDecrypt.addEventListener("submit", (e) => {
 
           formDecrypt.append(a);
 
+          loadingAnimation.classList.add("d-none");
+
           const div = document.createElement("div");
           div.classList.add("alert", "alert-success");
           div.setAttribute("role", "alert");
-          div.textContent = "Successfully created decrypted file. Click on the download link beside the Decrypt button to download the decrypted file.";
+          div.textContent =
+            "Successfully created decrypted file. Click on the download link beside the Decrypt button to download the decrypted file.";
 
           // Insert the alert at the beginning of the body
           formDecrypt.insertBefore(div, formDecrypt.firstChild);

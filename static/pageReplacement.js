@@ -1,3 +1,4 @@
+const loadingAnimation = document.querySelector("#loadingAnimation");
 const body = document.body;
 const showSimulation = document.querySelector("#showSimulation");
 
@@ -5,6 +6,8 @@ document
   .querySelector("#page_replacement_input_form")
   .addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    loadingAnimation.classList.remove("d-none");
 
     let isValid = /^(\d+|0|\s)+$/;
     let toNumbers = /\b(?:0|[1-9]\d*)\b/g;
@@ -46,6 +49,8 @@ document
 
         const returnedData = await response.json();
         // console.log("This is the returned data: ", returnedData);
+
+        loadingAnimation.classList.add("d-none");
 
         constructPageReplacementResults(
           pageReplacementAlgorithm,
@@ -109,7 +114,7 @@ function constructPageReplacementResults(
   if (showSimulation.checked) {
     const h1 = document.createElement("h1");
     h1.textContent = "SIMULATION";
-    h1.classList.add("mt-5")
+    h1.classList.add("mt-5");
     container.append(h1);
 
     // loop through each framesDetails
