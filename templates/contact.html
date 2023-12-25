@@ -1,0 +1,27 @@
+{% extends "index.html" %} {% block content %}
+<footer class="index__footer text-center">
+  <img
+    src="{{ url_for('static', filename='nene.jpg') }}"
+    alt="Author's picture"
+    class="border rounded-circle index__img mb-3"
+  />
+  <p class="mt-2">
+    Copyright &copy; <span id="currentYear"></span> Ernest Joseph S. Curativo
+    <br />
+    All rights reserved.
+  </p>
+
+  <div className="index__socials">
+    <a
+      href="https://www.linkedin.com/in/ernest-curativo/"
+      class="index__icon"
+      target="_blank"
+    >
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/ladyneneii" class="index__icon" target="_blank">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </div>
+</footer>
+{% endblock %}

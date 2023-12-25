@@ -26,6 +26,11 @@ def cpuScheduling():
     return render_template("cpuScheduling.html")
 
 
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
 @app.route("/pageReplacement")
 def pageReplacement():
     return render_template("pageReplacement.html")

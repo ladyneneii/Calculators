@@ -43,4 +43,18 @@
   background-color: #ffc8dd !important;
 }
 
+.index__footer {
+  margin: 20% 0 10%;
+}
 
+.index__img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.index__icon {
+  text-decoration: none;
+  color: rgb(153, 12, 127);
+  margin: 0 2%;
+}
