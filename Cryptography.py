@@ -254,10 +254,10 @@ def vernam_encrypt(transpose_encrypt_result, fileName):
     # number of underscores correspond to the number of columns
     otp_matrix_string += "_" * num_cols
 
-    # output a separate OTP file in case the otp is too long
-    print("helloooo")
-    with open(f"{fileName}_otp.txt", "w") as file:
-        file.write(otp_matrix_string)
+    # # output a separate OTP file in case the otp is too long
+    # print("helloooo")
+    # with open(f"{fileName}_otp.txt", "w") as file:
+    #     file.write(otp_matrix_string)
 
     return vernam_encrypt_result, otp_matrix_string
 
